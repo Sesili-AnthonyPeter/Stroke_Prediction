@@ -1,91 +1,117 @@
-# 🧠 Brainstroke Prediction
+Brainstroke Prediction
+Dataset Overview
 
-[![Kaggle Dataset](https://img.shields.io/badge/Dataset-Kaggle-blue)](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
+This project leverages the Stroke Prediction Dataset from Kaggle to predict stroke risks using machine learning techniques. The dataset comprises 5110 samples with 11 features and a target column (‘stroke’).
+Key Features:
 
-## Overview
-Predicting stroke risk using machine learning with various preprocessing and modeling techniques.
+    Demographic Attributes: gender, age, ever_married, Residence_type, work_type
 
-## 📚 Libraries Used
-- **Dataset Processing**: `Numpy`, `Pandas`
-- **Graphical Representation**: `Matplotlib`, `Seaborn`
-- **Scaling and Oversampling**: `Sklearn.preprocessing`, `Imblearn`
+    Medical Attributes: hypertension, heart_disease, avg_glucose_level, bmi
 
-## 🛠️ Preprocessing
-- Removed unnecessary columns (`id`).
-- Checked and imputed missing values (`BMI`).
-- Converted categorical data for dummy encoding.
-- Balanced dataset using random oversampling.
+    Lifestyle Attributes: smoking_status
 
-## 📊 EDA (Exploratory Data Analysis)
-- Analyzed attribute distributions and correlations.
-- Plotted relation of target attribute to other attributes.
+    Unique Identifier: id
 
-## 🏗️ Model Building
-- Split data into training and testing sets (80-20 split).
-- Applied various ML models: `Random Forest`, `Decision Tree`, `Multilayer Perceptron`, `KNN`, `Naïve Bayes`.
-- Evaluated models using confusion matrix, ROC, and AUC scores.
+Project Objective
 
-### Model Accuracies:
-- **Random Forest**: 99.38%
-- **Decision Tree**: 97.73%
-- **Multilayer Perceptron**: 81.49%
-- **KNN**: 97.22%
-- **Naïve Bayes**: 67.66%
+The primary goal is to build a machine learning model capable of predicting stroke occurrences with an accuracy exceeding 95%, enabling early detection and timely intervention to minimize risks associated with brain damage.
+Tools and Libraries
 
-### Chosen Model: **Random Forest**
-- Validated using k-fold (3 splits), achieving an accuracy of 99.38%.
+    Data Manipulation: Pandas, Numpy
 
-## 🏥 Background
-Stroke is caused by disrupted blood supply to the brain. Early detection can save lives by preventing severe brain damage and complications.
+    Data Visualization: Matplotlib, Seaborn
 
-## 📈 Business Understanding
-**Objective**: Predict the likelihood of a stroke using machine learning with over 95% accuracy.
-**Solution**: Developed a model using K-Nearest Neighbors and other algorithms.
+    Preprocessing and Modeling: Sklearn, Imblearn
 
-## 📂 Data Understanding
-**Dataset**: [Stroke Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset) from Kaggle.
-- **5110 samples**
-- **11 features**
-- **1 target column (stroke)**
+Data Preprocessing
 
-### Features:
-- `id`: Unique identifier
-- `gender`: Patient's gender
-- `age`: Age of the patient
-- `hypertension`: Hypertension status
-- `heart_disease`: Heart disease status
-- `ever_married`: Marital status
-- `work_type`: Employment type
-- `Residence_type`: Living area
-- `avg_glucose_level`: Average glucose level
-- `bmi`: Body Mass Index
-- `smoking_status`: Smoking status
+    Column Removal: Excluded irrelevant columns like id.
 
-## 🔧 Data Preparation
-- Imputed missing `bmi` values.
-- Removed unnecessary columns (`id`).
-- Handled outliers and standardized features.
-- Applied SMOTE for balanced resampling.
+    Handling Missing Data: Imputed missing values in the bmi feature.
 
-## 🤖 Modeling
-Used hyperparameter tuning for `Random Forest`, `Decision Tree`, `Multilayer Perceptron`, `KNN`, and `Naïve Bayes`. Achieved the highest performance with Random Forest:
+    Encoding: Applied dummy encoding for categorical variables.
 
-### Grid Search Results:
-- **Best Parameters**: `{'bootstrap': False, 'max_depth': 30, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}`
-- **Accuracy**: 99.79%
-- **Precision**: 99.59%
-- **Recall**: 100%
-- **F1-score**: 99.79%
+    Balancing the Dataset: Used Synthetic Minority Oversampling Technique (SMOTE) to address class imbalance.
 
-### Random Search Results:
-- **Best Parameters**: `{'n_estimators': 100, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 30, 'bootstrap': False}`
-- **Accuracy**: 99.74%
-- **Precision**: 99.49%
-- **Recall**: 100%
-- **F1-score**: 99.74%
+    Outlier Treatment: Identified and mitigated outliers to improve model performance.
 
-## 🏁 Conclusion
+Exploratory Data Analysis (EDA)
 
-The Random Forest model achieved the best performance for stroke prediction, with accuracy, precision, recall, and F1-score all exceeding 99%. Effective preprocessing and thorough evaluation validated the model's reliability. This high-performance model can significantly aid in early stroke detection, enabling timely interventions and improving healthcare outcomes.
+    Investigated distributions and correlations among features.
+
+    Analyzed the relationship between stroke occurrences and independent variables.
+
+    Visualized data using advanced graphical techniques for deeper insights.
+
+Model Development
+Training and Testing
+
+    Split the data into an 80-20 ratio for training and testing.
+
+    Evaluated five machine learning algorithms:
+
+        Random Forest
+
+        Decision Tree
+
+        Multilayer Perceptron (MLP)
+
+        K-Nearest Neighbors (KNN)
+
+        Naïve Bayes
+
+Evaluation Metrics
+
+Models were assessed using:
+
+    Accuracy
+
+    Precision
+
+    Recall
+
+    F1-score
+
+    ROC-AUC curves
+
+Results:
+
+    Random Forest emerged as the top-performing model:
+
+        Accuracy: 99.38%
+
+        Precision: 99.59%
+
+        Recall: 100%
+
+        F1-score: 99.79%
+
+Hyperparameter Optimization
+Grid Search
+
+    Best Parameters: {'bootstrap': False, 'max_depth': 30, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}
+
+    Results: Accuracy of 99.79%
+
+Random Search
+
+    Best Parameters: {'n_estimators': 100, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 30, 'bootstrap': False}
+
+    Results: Accuracy of 99.74%
+
+Key Findings
+
+    Random Forest achieved unparalleled accuracy and reliability, validated with k-fold cross-validation (3 splits).
+
+    Other models, such as Decision Tree and KNN, also demonstrated high accuracy (97.73% and 97.22%, respectively).
+
+    MLP and Naïve Bayes underperformed relative to other models.
+
+Significance of the Study
+
+Stroke is a critical medical condition caused by interrupted blood supply to the brain. Early detection through predictive modeling can save lives and prevent severe complications. The developed Random Forest model can serve as a vital tool for healthcare professionals in proactive stroke risk management.
+Conclusion
+
+Through rigorous preprocessing, exploratory analysis, and model optimization, the project achieved a robust predictive framework. The Random Forest model's superior performance highlights its potential in real-world healthcare applications for early stroke detection and intervention.
 
 
